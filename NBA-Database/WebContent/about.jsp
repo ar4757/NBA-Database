@@ -12,6 +12,7 @@
   <a href="index">Home</a>
   <a href="players">Players</a>
   <a href="teams">Teams</a>
+  <a href="games">Games</a>
   <a class="active" href="about">About</a>
 </div>
 <h1>Group 27's NBA database project was brought to you by:</h1>

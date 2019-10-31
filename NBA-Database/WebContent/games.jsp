@@ -6,23 +6,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Players</title>
+<title>Teams</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="topnav">
   <a href="index">Home</a>
-  <a class="active" href="players">Players</a>
+  <a href="players">Players</a>
   <a href="teams">Teams</a>
-  <a href="games">Games</a>
+  <a class="active" href="games">Games</a>
   <a href="about">About</a>
 </div>
 <ul>
-	<c:if test="${playerNames ne null}">
-  		<h3>${fn:length(playerNames)} tuple(s)</h3>
+	<c:if test="${games ne null}">
+  		<h3>${fn:length(games)} tuple(s)</h3>
 	</c:if>
-	<c:forEach items="${playerNames}" var="playerName">
-		<li>${playerName}</li>
+	<c:forEach items="${games}" var="game">
+		<li>${game}</li>
     </c:forEach>
     
 </ul>

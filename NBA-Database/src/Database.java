@@ -31,7 +31,7 @@ public class Database {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	teamNames.add(result.getString("TEAM_NAME"));
+            	teamNames.add(result.getString("TEAM_ABBREVIATION"));
             }
              
         } catch (SQLException ex) {
@@ -39,5 +39,22 @@ public class Database {
             throw ex;
         }      
         return teamNames;
+    }
+    
+    public ArrayList<String> getGames() throws SQLException {
+        String sql = "SELECT * FROM GAME";
+        ArrayList<String> games = new ArrayList<String>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	games.add(result.getString("GAME_DATE") + " " + result.getString("GAME_TIME") + " " + result.getString("TEAM_ABBREVIATION") + " " + result.getString("TEAM_RESULT") + " against " + result.getString("OPPOSE_ABBREVIATION"));
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return games;
     }
 }

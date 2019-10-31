@@ -14,6 +14,7 @@
   <a href="index">Home</a>
   <a href="players">Players</a>
   <a class="active" href="teams">Teams</a>
+  <a href="games">Games</a>
   <a href="about">About</a>
 </div>
 <ul>
