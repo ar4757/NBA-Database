@@ -22,8 +22,11 @@ public class PlayersServlet extends HttpServlet {
         Database database = new Database();
          
         try {
-            ArrayList<String> playerNames = database.getPlayers();
-             
+            ArrayList<Player> players = database.getPlayers();            
+            ArrayList<String> playerNames = new ArrayList<String>();
+            for (int i = 0; i < players.size(); i++) {
+            	playerNames.add(players.get(i).name);
+            }
             request.setAttribute("playerNames", playerNames);
              
             String page = "/players.jsp";

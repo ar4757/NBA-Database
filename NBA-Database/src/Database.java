@@ -7,21 +7,22 @@ public class Database {
     String user = "linyang";
     String password = "82730430";
      
-    public ArrayList<String> getPlayers() throws SQLException {
+    public ArrayList<Player> getPlayers() throws SQLException {
         String sql = "SELECT * FROM PLAYER";
-        ArrayList<String> playerNames = new ArrayList<String>();
+        ArrayList<Player> players = new ArrayList<Player>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	playerNames.add(result.getString("PLAYER_NAME"));
+            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"));
+            	players.add(newPlayer);
             }
              
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;
         }      
-        return playerNames;
+        return players;
     }
     
     public ArrayList<String> getTeams() throws SQLException {
