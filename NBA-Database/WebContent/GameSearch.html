@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>GameSearch</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" >
+<link rel="stylesheet" href="resources/css/font-awesome.min.css" >
+</head>
+<body style="background-color:grey">
+
+<div id="app" class="container-fluid" style="padding:0 2px 0 2px;">
+	<nav>
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item">Game</li>
+	    <li class="breadcrumb-item active" >Game Search</li>
+	  </ol>
+	</nav>
+	
+
+<form>
+
+  <div class="form-group">
+    <label for="timeSelect">Season select</label>
+    <select class="form-control" id="timeSelect">
+      <option>07:00pm</option>
+      <option>08:00pm</option>
+      <option>09:00pm</option>
+      <option>10:00pm</option>
+      <option>11:00pm</option>
+    </select>
+  </div>
+
+  
+  <div class="form-group">
+    <label for="seasonSelect">Season select</label>
+    <select class="form-control" id="seasonSelect">
+      <option>2012</option>
+      <option>2013</option>
+      <option>2014</option>
+      <option>2015</option>
+      <option>2016</option>
+      <option>2017</option>
+      <option>2018</option>
+    </select>
+  </div>
+  
+  <button @click="SearchDo" type="button" class="btn btn-primary">Search</button>
+  
+</form>
+
+		
+		
+</div>
+
+
+<!-- 在body结尾之前引入以下js文件。 注意导入顺序不可以随意改变。 -->
+<script src="resources/js/jquery.min.js" ></script>
+<script src="resources/js/bootstrap.bundle.min.js"></script>
+<script src="resources/layer/layer.js" ></script>
+<script src="resources/js/sweetalert.min.js" ></script>
+<script type="text/javascript" src="resources/js/vue.min.js"></script>
+<script type="text/javascript" src="resources/js/my.js"></script>
+
+
+
+
+
+
+</body>
+</html>
