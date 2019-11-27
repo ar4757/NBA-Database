@@ -50,10 +50,12 @@
 <script type="text/javascript">
 function showLoadingImage(){
 	parent.document.getElementById("loading-image").style.display = 'block';
+	parent.document.getElementById("contentframe").style.display = 'none';
 }
 
 function hideLoadingImage(){
 	parent.document.getElementById("loading-image").style.display = 'none';
+	parent.document.getElementById("contentframe").style.display = 'block';
 }
 </script>
 </body>

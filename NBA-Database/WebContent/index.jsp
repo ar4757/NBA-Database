@@ -197,7 +197,7 @@
 			
 			<div id="About" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href="about" target="contentframe" class="my-sub-item">Geoup 27</a>
+				<a href="about" target="contentframe" class="my-sub-item">Group 27</a>
 
 			</div>
 		</div>
@@ -208,9 +208,9 @@
 </div>
 <div class = "my-content">	
 	<div id = "loading-image"><img src=images/loading.gif height=“100px” width=“200px”></div>
-	<iframe name="contentframe"></iframe>
+	<iframe name="contentframe" id = "contentframe"></iframe>
 </div>
-<div class = "my-copyright">group27: Lin Yang,   Yan Yang,  Shuyu Yang,  Andrew Ratz</div>
+<div class = "my-copyright">Group 27: Lin Yang,   Yan Yang,  Shuyu Yang,  Andrew Ratz</div>
 
 <script src="resources/js/jquery.min.js" ></script>
 <script src="resources/js/bootstrap.bundle.min.js"></script>
@@ -221,10 +221,12 @@
 <script type="text/javascript">
 function showLoadingImage(){
 	document.getElementById("loading-image").style.display = 'block';
+	document.getElementById("contentframe").style.display = 'none';
 }
 
 function hideLoadingImage(){
 	document.getElementById("loading-image").style.display = 'none';
+	document.getElementById("contentframe").style.display = 'block';
 }
 </script>
 
