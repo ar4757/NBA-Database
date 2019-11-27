@@ -11,26 +11,30 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
 </head>
-<body style="background-color:grey">
+<body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
-	<c:if test="${playerNames ne null}">
-  		<h3>${fn:length(playerNames)} tuple(s)</h3>
+	<c:if test="${players ne null}">
+  		<h3>${fn:length(players)} tuple(s)</h3>
 	</c:if>
-	<c:forEach items="${playerNames}" var="playerName">
+	<c:forEach items="${players}" var="player">
 		<table class="table table-dark table-striped">
 			<thead>
 		 		<tr>
 		 			<th>Player Name</th>
-		 			<th>Player Birthdate</th>
-		 			<th>Player's Team</th>
+		 			<th>Player Height</th>
+		 			<th>Player Weight</th>
+		 			<th>Player Birthday</th>
+		 			<th>Player Teams</th>
 		 		</tr>
 		 	
 		 	</thead>
 		 		<tbody>
 		 	
 		 		<tr>
-		 			<td>${playerName}</td>
-		 			<td></td>
+		 			<td>${player.name}</td>
+		 			<td>${player.heightFormatted}</td>
+		 			<td>${player.weightFormatted}</td>
+		 			<td>${player.birthday}</td>
 		 			<td></td>
 		 		</tr>
 		 		
@@ -47,6 +51,14 @@
 <script src="resources/js/sweetalert.min.js" ></script>
 <script type="text/javascript" src="resources/js/vue.min.js"></script>
 <script type="text/javascript" src="resources/js/my.js"></script>
+<script type="text/javascript">
+function showLoadingImage(){
+	parent.document.getElementById("loading-image").style.display = 'block';
+}
 
+function hideLoadingImage(){
+	parent.document.getElementById("loading-image").style.display = 'none';
+}
+</script>
 </body>
 </html>

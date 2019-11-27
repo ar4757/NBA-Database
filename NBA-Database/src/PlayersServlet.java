@@ -19,15 +19,13 @@ public class PlayersServlet extends HttpServlet {
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
         Database database = new Database();
          
         try {
             ArrayList<Player> players = database.getPlayers();            
-            ArrayList<String> playerNames = new ArrayList<String>();
-            for (int i = 0; i < players.size(); i++) {
-            	playerNames.add(players.get(i).name);
-            }
-            request.setAttribute("playerNames", playerNames);
+            
+            request.setAttribute("players", players);
              
             String page = "/players.jsp";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);

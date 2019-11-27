@@ -111,7 +111,7 @@
 </style>
 
 </head>
-<body>
+<body onload="hideLoadingImage();">
 
 <div class= "my-title">NBA-Status</div>
 <div class= "my-nav">
@@ -125,10 +125,10 @@
 			
 			<div id="player-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href="players" target="contentframe" class="my-sub-item">
+				<a href="players" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">
 					Player Basic Information
 				</a>
-				<a href="PlayerRank.html" target="contentframe" class="my-sub-item">Player Rank</a>
+				<a href="PlayerRank.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Player Rank</a>
 			</div>
 		</div>
 		<!-- menu unit end -->
@@ -141,8 +141,8 @@
 			
 			<div id="Team-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href="teams" target="contentframe" class="my-sub-item">Team Basic Information</a>
-				<a href="TeamRank.html" target="contentframe" class="my-sub-item">Team Rank</a>
+				<a href="teams" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Team Basic Information</a>
+				<a href="TeamRank.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Team Rank</a>
 			</div>
 		</div>
 		<!-- menu unit end -->
@@ -206,7 +206,10 @@
 	</div>
 	
 </div>
-<div class = "my-content"><iframe name="contentframe"></iframe></div>
+<div class = "my-content">	
+	<div id = "loading-image"><img src=images/loading.gif height=“100px” width=“200px”></div>
+	<iframe name="contentframe"></iframe>
+</div>
 <div class = "my-copyright">group27: Lin Yang,   Yan Yang,  Shuyu Yang,  Andrew Ratz</div>
 
 <script src="resources/js/jquery.min.js" ></script>
@@ -215,6 +218,15 @@
 <script src="resources/js/sweetalert.min.js" ></script>
 <script type="text/javascript" src="resources/js/vue.min.js"></script>
 <script type="text/javascript" src="resources/js/my.js"></script>
+<script type="text/javascript">
+function showLoadingImage(){
+	document.getElementById("loading-image").style.display = 'block';
+}
+
+function hideLoadingImage(){
+	document.getElementById("loading-image").style.display = 'none';
+}
+</script>
 
 </body>
 </html>

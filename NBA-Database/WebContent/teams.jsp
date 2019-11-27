@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
 </head>
-<body style="background-color:grey">
+<body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
 	<c:if test="${teamNames ne null}">
   		<h3>${fn:length(teamNames)} tuple(s)</h3>
@@ -47,6 +47,14 @@
 <script src="resources/js/sweetalert.min.js" ></script>
 <script type="text/javascript" src="resources/js/vue.min.js"></script>
 <script type="text/javascript" src="resources/js/my.js"></script>
+<script type="text/javascript">
+function showLoadingImage(){
+	parent.document.getElementById("loading-image").style.display = 'block';
+}
 
+function hideLoadingImage(){
+	parent.document.getElementById("loading-image").style.display = 'none';
+}
+</script>
 </body>
 </html>
