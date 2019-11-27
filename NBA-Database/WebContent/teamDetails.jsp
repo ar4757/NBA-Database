@@ -7,31 +7,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Teams</title>
+<title>${team.name}</title>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
 </head>
 <body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
-  	<h3>Teams</h3>
-	<c:forEach items="${teams}" var="team">
+  	<h3>${team.name}</h3>
+	<c:forEach items="${players}" var="player">
 		<table class="table table-dark table-striped">
 			<thead>
 		 		<tr>
-		 			<th>Team Logo</th>
-		 			<th>Team Abr</th>
-		 			<th>Team Name</th>
+		 			<th>Player Name</th>
+		 			<th>Player Height</th>
+		 			<th>Player Weight</th>
+		 			<th>Player Birthday</th>
+		 			<th>Player Teams</th>
 		 		</tr>
 		 	
 		 	</thead>
-		 		<tbody>
+	 		<tbody>
 		 	
-		 		<tr onclick="showLoadingImage();" data-href="<c:url value="/teamDetails">
-                             <c:param name="team_abbreviation" value="${team.abbreviation}"/>
-                         </c:url>" style="cursor:pointer">
-		 			<td><img src=${team.logo} style="width:100px;height:100px;"></td>
-		 			<td>${team.abbreviation}</td>
-		 			<td>${team.name}</td>
+		 		<tr>
+		 			<td>${player.name}</td>
+		 			<td>${player.heightFormatted}</td>
+		 			<td>${player.weightFormatted}</td>
+		 			<td>${player.birthday}</td>
+		 			<td></td>
 		 		</tr>
 		 		
 		 	</tbody>
@@ -57,13 +59,6 @@ function hideLoadingImage(){
 	parent.document.getElementById("loading-image").style.display = 'none';
 	parent.document.getElementById("contentframe").style.display = 'block';
 }
-
-$(document).ready(function(){
-    $('table tr').click(function(){
-        window.location = $(this).data('href');
-        return false;
-    });
-});
 </script>
 </body>
 </html>

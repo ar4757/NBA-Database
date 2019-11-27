@@ -43,6 +43,39 @@ public class Database {
         return teams;
     }
     
+    public Team getTeamWithAbbreviation(String team_abbreviation) throws SQLException {
+        String sql = "SELECT * FROM TEAM WHERE TEAM_ABBREVIATION = '" + team_abbreviation + "'";
+        Team team;
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            result.next();
+            team = new Team(result.getString("TEAM_NAME"), result.getString("TEAM_ABBREVIATION"));             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return team;
+    }
+    
+    public ArrayList<Player> getPlayersOnTeam(Team team) throws SQLException {
+        String sql = "SELECT DISTINCT PLAYER_NAME, PLAYER_HEIGHT, PLAYER_WEIGHT, PLAYER_BIRTHDAY FROM PLAYER_STATS NATURAL JOIN PLAYER WHERE TEAM_ABBREVIATION = '" + team.getAbbreviation() + "'";
+        ArrayList<Player> players = new ArrayList<Player>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"));
+            	players.add(newPlayer);
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return players;
+    }
+    
     // Get team's rank in 2012
     public ArrayList<String> getTeamranks() throws SQLException {
         String sql = "SELECT team_abbreviation, count(team_result) as teamWin\r\n" + 

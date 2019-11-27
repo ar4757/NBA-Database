@@ -13,9 +13,7 @@
 </head>
 <body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
-	<c:if test="${players ne null}">
-  		<h3>${fn:length(players)} tuple(s)</h3>
-	</c:if>
+  	<h3>Players</h3>
 	<c:forEach items="${players}" var="player">
 		<table class="table table-dark table-striped">
 			<thead>
