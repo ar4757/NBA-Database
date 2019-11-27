@@ -20,6 +20,7 @@
 		<table class="table table-dark table-striped">
 			<thead>
 		 		<tr>
+		 			<th>Team Logo</th>
 		 			<th>Team Abr</th>
 		 			<th>Team Name</th>
 		 		</tr>
@@ -28,6 +29,7 @@
 		 		<tbody>
 		 	
 		 		<tr>
+		 			<td><img src=${team.logo} style="width:100px;height:100px;"></td>
 		 			<td>${team.abbreviation}</td>
 		 			<td>${team.name}</td>
 		 		</tr>
