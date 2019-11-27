@@ -247,4 +247,29 @@ public class Database {
         }      
         return games;
     }
+    
+    public int getTupleCount() throws SQLException {
+    	int tupleCount = 0;
+		tupleCount += getTupleCountForTable("PLAYER");
+		tupleCount += getTupleCountForTable("TEAM");
+		tupleCount += getTupleCountForTable("GAME");
+		tupleCount += getTupleCountForTable("PLAYER_STATS");
+    	return tupleCount;
+    }
+    
+    private int getTupleCountForTable(String tableName) throws SQLException {
+    	int tupleCount = 0;
+    	try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+	    	String sql = "SELECT COUNT(*) AS ROW_COUNT FROM " + tableName;
+	        PreparedStatement statement = connection.prepareStatement(sql);
+	        ResultSet result = statement.executeQuery();
+	        result.next();
+	        tupleCount = result.getInt("ROW_COUNT");
+    	}
+    	catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+    	return tupleCount;
+    }
 }

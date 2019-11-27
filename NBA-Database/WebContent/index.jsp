@@ -198,7 +198,10 @@
 			<div id="About" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
 				<a href="about" target="contentframe" class="my-sub-item">Group 27</a>
-
+				
+				<a href="tuples" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">
+					Tuple Count
+				</a>
 			</div>
 		</div>
 		<!-- menu unit end -->
@@ -207,7 +210,7 @@
 	
 </div>
 <div class = "my-content">	
-	<div id = "loading-image"><img src=images/loading.gif height=“100px” width=“200px”></div>
+	<div id = "loading-image"><img src=images/loading.gif style="width:30px;height:30px;">   Loading</img></div>
 	<iframe name="contentframe" id = "contentframe"></iframe>
 </div>
 <div class = "my-copyright">Group 27: Lin Yang,   Yan Yang,  Shuyu Yang,  Andrew Ratz</div>
