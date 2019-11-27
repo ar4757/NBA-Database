@@ -164,21 +164,30 @@ public class Database {
     // Get the improvement of each player, the example player is 'LeBron James';
     // Input changes it;
     // to achieve that, a new view Improvement is created.
-    public ArrayList<String> getPlayerimpro() throws SQLException {
-        String sql = "SELECT seasonyear, \r\n" + 
-        		"    round(avg(playpts),3) as average_point, \r\n" + 
-        		"    round(avg(playast),3) as average_assistant, \r\n" + 
-        		"    round(avg(play3pp),3) as average_3point_precentage\r\n" + 
-        		"FROM Improvement\r\n" + 
-        		"WHERE player_name = 'LeBron James'\r\n" + 		//the name should be change with different input
-        		"GROUP BY seasonyear\r\n" + 
-        		"ORDER BY seasonyear";
-        ArrayList<String> impro = new ArrayList<String>();
+    public ArrayList<PlayerImprovement> getPlayersWithImprovement() throws SQLException {
+        String sql = "SELECT * FROM\n" + 
+        		"    (SELECT player_name as before_player_name,\n" + 
+        		"    round(avg(playpts),3) as before_average_point,\n" + 
+        		"    round(avg(playast),3) as before_average_assist,\n" + 
+        		"    round(avg(play3pp),3) as before_average_3pt\n" + 
+        		"    FROM Improvement\n" + 
+        		"    WHERE seasonyear = '2012'\n" + 
+        		"    GROUP BY player_name),\n" + 
+        		"    (SELECT player_name as after_player_name,\n" + 
+        		"    round(avg(playpts),3) as after_average_point,\n" + 
+        		"    round(avg(playast),3) as after_average_assist,\n" + 
+        		"    round(avg(play3pp),3) as after_average_3pt\n" + 
+        		"    FROM Improvement\n" + 
+        		"    WHERE seasonyear = '2017'\n" + 
+        		"    GROUP BY player_name)\n" + 
+        		"WHERE before_player_name = after_player_name";
+        ArrayList<PlayerImprovement> impro = new ArrayList<PlayerImprovement>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	impro.add(result.getString("SEASONYEAR") + " " + result.getString("AVERAGE_POINT") + " " + result.getString("AVERAGE_ASSISTANT") + " " + result.getString("AVERAGE_3POINT_PRECENTAGE"));
+            	PlayerImprovement newPlayer = new PlayerImprovement(result.getString("after_player_name"), result.getString("before_average_point"), result.getString("before_average_assist"), result.getString("before_average_3pt"), result.getString("after_average_point"), result.getString("after_average_assist"), result.getString("after_average_3pt"));
+            	impro.add(newPlayer);
             }
              
         } catch (SQLException ex) {

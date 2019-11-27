@@ -129,6 +129,7 @@
 					Player Basic Information
 				</a>
 				<a href="PlayerRank.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Player Rank</a>
+				<a href="playerImprovement" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Player Improvement</a>
 			</div>
 		</div>
 		<!-- menu unit end -->
@@ -175,7 +176,7 @@
 		</div>
 		<!-- menu unit end -->
 		
-				<!-- menu unit start-->
+		<!-- menu unit start-->
 		<div>
 			<div class="my-main-item" data-toggle="collapse" data-target="#MVP">
 				MVP
