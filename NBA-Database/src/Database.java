@@ -25,21 +25,22 @@ public class Database {
         return players;
     }
     
-    public ArrayList<String> getTeams() throws SQLException {
+    public ArrayList<Team> getTeams() throws SQLException {
         String sql = "SELECT * FROM TEAM";
-        ArrayList<String> teamNames = new ArrayList<String>();
+        ArrayList<Team> teams = new ArrayList<Team>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	teamNames.add(result.getString("TEAM_ABBREVIATION"));
+            	Team newTeam = new Team(result.getString("TEAM_NAME"), result.getString("TEAM_ABBREVIATION"));
+            	teams.add(newTeam);
             }
              
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;
         }      
-        return teamNames;
+        return teams;
     }
     
     // Get team's rank in 2012

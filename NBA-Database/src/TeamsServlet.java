@@ -22,9 +22,9 @@ public class TeamsServlet extends HttpServlet {
         Database database = new Database();
          
         try {
-            ArrayList<String> teamNames = database.getTeams();
+            ArrayList<Team> teams = database.getTeams();
              
-            request.setAttribute("teamNames", teamNames);
+            request.setAttribute("teams", teams);
              
             String page = "/teams.jsp";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);

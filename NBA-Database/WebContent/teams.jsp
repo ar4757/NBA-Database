@@ -13,25 +13,23 @@
 </head>
 <body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
-	<c:if test="${teamNames ne null}">
-  		<h3>${fn:length(teamNames)} tuple(s)</h3>
+	<c:if test="${teams ne null}">
+  		<h3>${fn:length(teams)} tuple(s)</h3>
 	</c:if>
-	<c:forEach items="${teamNames}" var="teamName">
+	<c:forEach items="${teams}" var="team">
 		<table class="table table-dark table-striped">
 			<thead>
 		 		<tr>
-		 			<th>Teams' Abr</th>
-		 			<th>Team's</th>
-		 			<th>Team's</th>
+		 			<th>Team Abr</th>
+		 			<th>Team Name</th>
 		 		</tr>
 		 	
 		 	</thead>
 		 		<tbody>
 		 	
 		 		<tr>
-		 			<td>${teamName}</td>
-		 			<td></td>
-		 			<td></td>
+		 			<td>${team.abbreviation}</td>
+		 			<td>${team.name}</td>
 		 		</tr>
 		 		
 		 	</tbody>
