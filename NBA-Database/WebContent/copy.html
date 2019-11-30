@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>PlayerRank</title>
+<title>MVP</title>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
 </head>
-<body style="background-color:grey" onload="hideLoadingImage();">
+<body style="background-color:grey">
 
 <div id="app" class="container-fluid" style="padding:0 2px 0 2px;">
 	<nav>
 	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item">Player</li>
-	    <li class="breadcrumb-item active" >SEASON SELECT</li>
+	    <li class="breadcrumb-item">MVP</li>
+	    <li class="breadcrumb-item active" >MVP List</li>
 	  </ol>
 	</nav>
 	
@@ -23,6 +23,7 @@
 		 
 		 	<thead>
 		 		<tr>
+		 			<th>Player Name</th>
 		 			<th>Season</th>
 		 			<th>Details</th>
 		 		</tr>
@@ -30,41 +31,49 @@
 		 	</thead>
 		 	
 		 	<tbody>
-		 	
+		
 		 		<tr>
+		 			<td>Paul Pierce</td>
 		 			<td>2012</td>
-		 			<td><a href =#>More</a></td>
+		 			<td><a href ="https://en.wikipedia.org/wiki/Paul_Pierce">More</a></td>
 		 		</tr>
 		 		
 		 		<tr>
+		 			<td>Stephen Curry</td>
 		 			<td>2013</td>
-		 			<td><a href =#>More</a></td>
+		 			<td><a href ="https://en.wikipedia.org/wiki/Stephen_Curry">More</a></td>
 		 		</tr>
 		 		
 		 		<tr>
+		 			<td>LeBron James</td>
 		 			<td>2014</td>
-		 			<td><a href =#>More</a></td>
+		 			<td><a href ="https://en.wikipedia.org/wiki/LeBron_James">More</a></td>
 		 		</tr>
 		 		
 		 		<tr>
+		 			<td>Kyrie Irving</td>
 		 			<td>2015</td>
-		 			<td><a href =#>More</a></td>
+		 			<td><a href ="https://en.wikipedia.org/wiki/Kyrie_Irving">More</a></td>
 		 		</tr>
 		 		
 		 		<tr>
+		 			<td>Anthony Davis</td>
 		 			<td>2016</td>
-		 			<td><a href =#>More</a></td>
+		 			<td><a href ="https://en.wikipedia.org/wiki/Anthony_Davis">More</a></td>
 		 		</tr>
 		 		
 		 		<tr>
+		 			<td>James Harden</td>
 		 			<td>2017</td>
-		 			<td><a href =#>More</a></td>
+		 			<td><a href ="https://en.wikipedia.org/wiki/James_Harden">More</a></td>
 		 		</tr>
 		 		
 		 		<tr>
+		 			<td>James Harden</td>
 		 			<td>2018</td>
-		 			<td><a href =#>More</a></td>
-		 		</tr>
+		 			<td><a href ="https://en.wikipedia.org/wiki/James_Harden">More</a></td>
+		 		</tr>		 		
+		 		
 		 	</tbody>
 		
 		</table>	
@@ -79,15 +88,10 @@
 <script src="resources/js/sweetalert.min.js" ></script>
 <script type="text/javascript" src="resources/js/vue.min.js"></script>
 <script type="text/javascript" src="resources/js/my.js"></script>
-<script type="text/javascript">
-function showLoadingImage(){
-	parent.document.getElementById("loading-image").style.display = 'block';
-	parent.document.getElementById("contentframe").style.display = 'none';
-}
-function hideLoadingImage(){
-	parent.document.getElementById("loading-image").style.display = 'none';
-	parent.document.getElementById("contentframe").style.display = 'block';
-}
-</script>
+
+
+
+
+
 </body>
 </html>
