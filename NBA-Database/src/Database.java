@@ -58,6 +58,47 @@ public class Database {
         return team;
     }
     
+    public GamePrediction predictGame(String team_away, String team_home) throws SQLException {
+    	String sql = "SELECT TEAM_ABBREVIATION, OPPOSE_ABBREVIATION,\n" + 
+    			"    count(case when TEAM_RESULT = 'Win' then 1 else null end) as wins,\n" + 
+    			"    count(case when TEAM_RESULT = 'Loss' then 1 else null end) as losses\n" + 
+    			"FROM GAME\n" + 
+    			"WHERE TEAM_ABBREVIATION = '" + team_away + "'\n" + 
+    			"    AND TEAM_LOCATION = 'Away'\n" + 
+    			"    AND OPPOSE_ABBREVIATION = '" + team_home + "'\n" + 
+    			"GROUP BY TEAM_ABBREVIATION, OPPOSE_ABBREVIATION";
+        GamePrediction gamePrediction;
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            result.next();
+            String wins = result.getString("wins");
+            String losses = result.getString("losses");
+            int winInt = Integer.parseInt(wins);
+            int lossInt = Integer.parseInt(losses);
+            System.out.println("Win: " + winInt + " " + "Loss: " + lossInt);
+            //Away team wins
+            if (winInt > lossInt) {
+                Double certainty = 100.0 * winInt / (winInt + lossInt);
+                gamePrediction = new GamePrediction(team_away, team_home, certainty);
+            }
+            //Home team wins
+            else if (lossInt > winInt) {
+                Double certainty = 100.0 * lossInt / (winInt + lossInt);
+                gamePrediction = new GamePrediction(team_home, team_away, certainty);
+            }
+            //Tie
+            else {
+            	Double certainty = 50.0;
+                gamePrediction = new GamePrediction(team_away, team_home, certainty);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return gamePrediction;
+    }
+    
     public ArrayList<Player> getPlayersOnTeam(Team team) throws SQLException {
         String sql = "SELECT DISTINCT PLAYER_NAME, PLAYER_HEIGHT, PLAYER_WEIGHT, PLAYER_BIRTHDAY FROM PLAYER_STATS NATURAL JOIN PLAYER WHERE TEAM_ABBREVIATION = '" + team.getAbbreviation() + "'";
         ArrayList<Player> players = new ArrayList<Player>();

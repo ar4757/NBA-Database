@@ -170,7 +170,9 @@
 			
 			<div id="Predict" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href="GamePrediction.html" target="contentframe" class="my-sub-item">Game Prediction</a>
+				<a href="GamePrediction" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">
+					Game Prediction
+				</a>
 
 			</div>
 		</div>
