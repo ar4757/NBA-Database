@@ -1,7 +1,75 @@
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
- 
+
+
+/*
+ * Several VIEW table are created to simplify the SQL language:
+ * Player_rank: it has attribute PLAYER_RANK, PLAYER_NAME, PLAY_POSITION, RANK_SCORE
+ * 		SELECT * FROM PLAYER_RANK_2012
+ * 		SELECT * FROM PLAYER_RANK_2013
+ *  	SELECT * FROM PLAYER_RANK_2014
+ * 		SELECT * FROM PLAYER_RANK_2015
+ * 		SELECT * FROM PLAYER_RANK_2016
+ * 		SELECT * FROM PLAYER_RANK_2017
+ * 		SELECT * FROM PLAYER_RANK_2018
+ * 		SELECT * FROM PLAYER_RANK_SEVENYEAR
+ * Team_rank: it has attribute TEAM_RANK, TEAM_ABBREVIATION, TEAMWINSCORE
+ * 		SELECT * FROM TEAM_RANK_2012
+ * 		SELECT * FROM TEAM_RANK_2013
+ * 		SELECT * FROM TEAM_RANK_2014
+ * 		SELECT * FROM TEAM_RANK_2015
+ * 		SELECT * FROM TEAM_RANK_2016
+ * 		SELECT * FROM TEAM_RANK_2017
+ * 		SELECT * FROM TEAM_RANK_2018
+ * 		SELECT * FROM TEAM_RANK_SEVENYEAR
+ * MVP: it has the attributes PLAYER_NAME, MVAPRANK
+ * 		SELECT * FROM MVP2012
+ * 		SELECT * FROM MVP2013
+ * 		SELECT * FROM MVP2014
+ * 		SELECT * FROM MVP2015
+ * 		SELECT * FROM MVP2016
+ * 		SELECT * FROM MVP2017
+ * 		SELECT * FROM MVP2018
+ * 
+ * The relation of age and performance: it has attributes AGE, PERFORMANCE
+ * 		SELECT * FROM AGE_PERFORM
+ * 
+ * The offensivility of one team in the whole seven year: it has attributes TEAM_ABBREVIATION, OFFENSIVE, DEFENSIVE, OFFENSIVILITY
+ * When the offensivility > 0.5, it means the team prefer offensive, when offensivility < 0.5, means defensive
+ * 
+ * 		SELECT team_abbreviation, ROUND(avg(playorb), 3) AS OFFENSIVE,
+ *			ROUND(avg(playdrb), 3) AS DEFENSIVE, ROUND(avg(playorb)/(avg(playdrb)+0.001), 2) AS OFFENSIVILITY
+ *		FROM player_in_team
+ *		WHERE team_abbreviation = 'CLE'
+ *		GROUP BY team_abbreviation
+ * 
+ * The rank change of each team: it has attributes TEAM_ABBREVIATION, TEAMRANK2012, TEAMRANK2013, 
+ * 								 TEAMRANK2014, TEAMRANK2015, TEAMRANK2016, TEAMRANK2017, TEAMRANK2017
+ * 
+ * 		SELECT t1.team_abbreviation, t1.TEAM_RANK as teamrank2012, t2.TEAM_RANK as teamrank2013, 
+        	   t3.TEAM_RANK as teamrank2014, t4.TEAM_RANK as teamrank2015, t5.TEAM_RANK as teamrank2016, 
+       		   t6.TEAM_RANK as teamrank2017, t7.TEAM_RANK as teamrank2018
+		FROM team_rank_2012 t1, team_rank_2013 t2, team_rank_2014 t3, 
+     		 team_rank_2015 t4, team_rank_2016 t5, team_rank_2017 t6, 
+     		 team_rank_2018 t7
+		WHERE   t1.team_abbreviation = t2.team_abbreviation
+    		AND t2.team_abbreviation = t3.team_abbreviation
+    		AND t3.team_abbreviation = t4.team_abbreviation
+    		AND t4.team_abbreviation = t5.team_abbreviation
+    		AND t5.team_abbreviation = t6.team_abbreviation
+    		AND t6.team_abbreviation = t7.team_abbreviation
+ * 
+ * 
+*/
+
+
+
+
+
+
+
+
 public class Database {
     String databaseURL = "jdbc:oracle:thin:@oracle.cise.ufl.edu:1521:orcl";
     String user = "linyang";
@@ -76,37 +144,7 @@ public class Database {
         return players;
     }
     
-	/*
-	 * Several VIEW table are created to simplify the SQL language:
-	 * Player_rank: 
-	 * 		SELECT * FROM PLAYER_RANK_2012
-	 * 		SELECT * FROM PLAYER_RANK_2013
-	 *  	SELECT * FROM PLAYER_RANK_2014
-	 * 		SELECT * FROM PLAYER_RANK_2015
-	 * 		SELECT * FROM PLAYER_RANK_2016
-	 * 		SELECT * FROM PLAYER_RANK_2017
-	 * 		SELECT * FROM PLAYER_RANK_2018
-	 * Team_rank:
-	 * 		SELECT * FROM TEAM_RANK_2012
-	 * 		SELECT * FROM TEAM_RANK_2013
-	 * 		SELECT * FROM TEAM_RANK_2014
-	 * 		SELECT * FROM TEAM_RANK_2015
-	 * 		SELECT * FROM TEAM_RANK_2016
-	 * 		SELECT * FROM TEAM_RANK_2017
-	 * 		SELECT * FROM TEAM_RANK_2018
-	 * MVP:
-	 * 		SELECT * FROM MVP2012
-	 * 		SELECT * FROM MVP2013
-	 * 		SELECT * FROM MVP2014
-	 * 		SELECT * FROM MVP2015
-	 * 		SELECT * FROM MVP2016
-	 * 		SELECT * FROM MVP2017
-	 * 		SELECT * FROM MVP2018
-	 * 
-	 * 
-	*/
-    
-    
+
     
     // Get team's rank in 2012
     public ArrayList<TEAM_RANK_2012> getTeamranks() throws SQLException {
@@ -205,7 +243,7 @@ public class Database {
         		"    round(avg(playast),3) as after_average_assist,\n" + 
         		"    round(avg(play3pp),3) as after_average_3pt\n" + 
         		"    FROM Improvement\n" + 
-        		"    WHERE seasonyear = '2017'\n" + 
+        		"    WHERE seasonyear = '2018'\n" + 
         		"    GROUP BY player_name)\n" + 
         		"WHERE before_player_name = after_player_name";
         ArrayList<PlayerImprovement> impro = new ArrayList<PlayerImprovement>();
