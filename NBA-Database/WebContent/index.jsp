@@ -128,7 +128,7 @@
 				<a href="players" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">
 					Player Basic Information
 				</a>
-				<a href="PlayerRank.html" target="contentframe" class="my-sub-item">Player Rank</a>
+				<a href="PlayerRank.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Player Rank</a>
 				<a href="playerImprovement" target="contentframe" class="my-sub-item">Player Improvement</a>
 			</div>
 		</div>
@@ -186,7 +186,7 @@
 			
 			<div id="MVP" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href="MVPdisplay.html" target="contentframe" class="my-sub-item">Most Valuable Players</a>
+				<a href="MVPdisplay.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Most Valuable Players</a>
 
 			</div>
 		</div>
