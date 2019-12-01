@@ -21,6 +21,7 @@
 		 			<th>Team Logo</th>
 		 			<th>Team Abr</th>
 		 			<th>Team Name</th>
+		 			<th>Specialty</th>
 		 		</tr>
 		 	
 		 	</thead>
@@ -32,6 +33,7 @@
 		 			<td><img src=${team.logo} style="width:100px;height:100px;"></td>
 		 			<td>${team.abbreviation}</td>
 		 			<td>${team.name}</td>
+		 			<td>${team.specialty}</td>
 		 		</tr>
 		 		
 		 	</tbody>

@@ -94,13 +94,20 @@ public class Database {
     }
     
     public ArrayList<Team> getTeams() throws SQLException {
-        String sql = "SELECT * FROM TEAM";
+        String sql = "SELECT TEAM.TEAM_NAME,\n" + 
+        		"        TEAM.TEAM_ABBREVIATION,\n" + 
+        		"        ROUND(avg(playorb), 3) AS OFFENSIVE,\n" + 
+        		"        ROUND(avg(playdrb), 3) AS DEFENSIVE,\n" + 
+        		"        ROUND(avg(playorb)/(avg(playdrb)+0.001), 2) AS OFFENSIVILITY\n" + 
+        		"FROM TEAM, player_in_team\n" + 
+        		"WHERE TEAM.TEAM_ABBREVIATION = PLAYER_IN_TEAM.TEAM_ABBREVIATION\n" + 
+        		"GROUP BY TEAM.TEAM_NAME, TEAM.TEAM_ABBREVIATION";
         ArrayList<Team> teams = new ArrayList<Team>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	Team newTeam = new Team(result.getString("TEAM_NAME"), result.getString("TEAM_ABBREVIATION"));
+            	Team newTeam = new Team(result.getString("TEAM_NAME"), result.getString("TEAM_ABBREVIATION"), result.getString("OFFENSIVILITY"));
             	teams.add(newTeam);
             }
              

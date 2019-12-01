@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
 </head>
-<body style="background-color:grey">
+<body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
   	<h3>Age Influence</h3>
 	<c:forEach items="${agePerforms}" var="agePerform">
@@ -42,5 +42,16 @@
 <script src="resources/js/sweetalert.min.js" ></script>
 <script type="text/javascript" src="resources/js/vue.min.js"></script>
 <script type="text/javascript" src="resources/js/my.js"></script>
+<script type="text/javascript">
+function showLoadingImage(){
+	parent.document.getElementById("loading-image").style.display = 'block';
+	parent.document.getElementById("contentframe").style.display = 'none';
+}
+
+function hideLoadingImage(){
+	parent.document.getElementById("loading-image").style.display = 'none';
+	parent.document.getElementById("contentframe").style.display = 'block';
+}
+</script>
 </body>
 </html>

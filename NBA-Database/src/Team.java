@@ -2,10 +2,12 @@
 public class Team {
 	private String name;
 	private String abbreviation;
+	private String offensivility;
 	
-	public Team(String name, String abbreviation) {
+	public Team(String name, String abbreviation, String offensivility) {
 		this.name = name;
 		this.abbreviation = abbreviation;
+		this.offensivility = offensivility;
 	}
 	
 	public String getName() {
@@ -14,6 +16,15 @@ public class Team {
 	
 	public String getAbbreviation() {
 		return abbreviation;
+	}
+
+	public String getSpecialty() {
+		if (Double.parseDouble(offensivility) > 0.5) {
+			return "Offense";
+		}
+		else {
+			return "Defense";
+		}
 	}
 	
 	public String getLogo() {
