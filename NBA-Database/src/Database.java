@@ -76,14 +76,41 @@ public class Database {
         return players;
     }
     
+	/*
+	 * Several VIEW table are created to simplify the SQL language:
+	 * Player_rank: 
+	 * 		SELECT * FROM PLAYER_RANK_2012
+	 * 		SELECT * FROM PLAYER_RANK_2013
+	 *  	SELECT * FROM PLAYER_RANK_2014
+	 * 		SELECT * FROM PLAYER_RANK_2015
+	 * 		SELECT * FROM PLAYER_RANK_2016
+	 * 		SELECT * FROM PLAYER_RANK_2017
+	 * 		SELECT * FROM PLAYER_RANK_2018
+	 * Team_rank:
+	 * 		SELECT * FROM TEAM_RANK_2012
+	 * 		SELECT * FROM TEAM_RANK_2013
+	 * 		SELECT * FROM TEAM_RANK_2014
+	 * 		SELECT * FROM TEAM_RANK_2015
+	 * 		SELECT * FROM TEAM_RANK_2016
+	 * 		SELECT * FROM TEAM_RANK_2017
+	 * 		SELECT * FROM TEAM_RANK_2018
+	 * MVP:
+	 * 		SELECT * FROM MVP2012
+	 * 		SELECT * FROM MVP2013
+	 * 		SELECT * FROM MVP2014
+	 * 		SELECT * FROM MVP2015
+	 * 		SELECT * FROM MVP2016
+	 * 		SELECT * FROM MVP2017
+	 * 		SELECT * FROM MVP2018
+	 * 
+	 * 
+	*/
+    
+    
+    
     // Get team's rank in 2012
-    public ArrayList<String> getTeamranks() throws SQLException {
-        String sql = "SELECT team_abbreviation, count(team_result) as teamWin\r\n" + 
-        		"FROM game\r\n" + 
-        		"WHERE team_result = 'Win'\r\n" + 
-        		"    AND game_date like '2012%'\r\n" + 
-        		"GROUP BY team_abbreviation\r\n" + 
-        		"ORDER BY teamwin DESC";
+    public ArrayList<TEAM_RANK_2012> getTeamranks() throws SQLException {
+        String sql = "SELECT * FROM TEAM_RANK_2012";
         ArrayList<String> teamNames = new ArrayList<String>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);

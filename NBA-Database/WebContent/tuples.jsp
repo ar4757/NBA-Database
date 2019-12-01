@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Players</title>
+<title>Tuple Count</title>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
 </head>
