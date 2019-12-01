@@ -148,16 +148,19 @@ public class Database {
             //Away team wins
             if (winInt > lossInt) {
                 Double certainty = 100.0 * winInt / (winInt + lossInt);
+                certainty = (double) Math.round(certainty * 10) / 10;
                 gamePrediction = new GamePrediction(team_away, team_home, certainty);
             }
             //Home team wins
             else if (lossInt > winInt) {
                 Double certainty = 100.0 * lossInt / (winInt + lossInt);
+                certainty = (double) Math.round(certainty * 10) / 10;
                 gamePrediction = new GamePrediction(team_home, team_away, certainty);
             }
             //Tie
             else {
             	Double certainty = 50.0;
+            	certainty = (double) Math.round(certainty * 10) / 10;
                 gamePrediction = new GamePrediction(team_away, team_home, certainty);
             }
         } catch (SQLException ex) {
