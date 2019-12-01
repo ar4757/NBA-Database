@@ -113,7 +113,7 @@
 </head>
 <body onload="hideLoadingImage();">
 
-<div class= "my-title">NBA-Status</div>
+<div class= "my-title">NBA-Database</div>
 <div class= "my-nav">
 
 	<div class="accordion" id="my-menu" style="color:white;">
@@ -187,6 +187,8 @@
 			<div id="Advanced-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
 				<a href=AgePerformance target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Common Age Influence</a>
+				
+				<a href=HeightPerformance target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Common Height Influence</a>
 
 			</div>
 		</div>

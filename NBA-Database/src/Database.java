@@ -424,6 +424,24 @@ public class Database {
         return agePerforms;
     }
     
+    public ArrayList<HeightPerform> getHeightPerform() throws SQLException {
+        String sql = "SELECT * FROM HEIGHT_PERFORM";
+        ArrayList<HeightPerform> heightPerforms = new ArrayList<HeightPerform>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	HeightPerform new_height_perform = new HeightPerform(result.getString("HEIGHT"), result.getString("PERFORMANCE"));
+            	heightPerforms.add(new_height_perform);
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return heightPerforms;
+    }
+    
     public int getTupleCount() throws SQLException {
     	int tupleCount = 0;
 		tupleCount += getTupleCountForTable("PLAYER");
