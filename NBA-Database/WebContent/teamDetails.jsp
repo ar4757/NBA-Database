@@ -22,7 +22,6 @@
 		 			<th>Player Height</th>
 		 			<th>Player Weight</th>
 		 			<th>Player Birthday</th>
-		 			<th>Player Teams</th>
 		 		</tr>
 		 	
 		 	</thead>
