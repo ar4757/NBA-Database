@@ -126,7 +126,7 @@ public class Database {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             result.next();
-            team = new Team(result.getString("TEAM_NAME"), result.getString("TEAM_ABBREVIATION"));             
+            team = new Team(result.getString("TEAM_NAME"), result.getString("TEAM_ABBREVIATION"), "");             
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;

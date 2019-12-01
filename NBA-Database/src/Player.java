@@ -29,7 +29,21 @@ public class Player {
 	}
 	
 	public String getBirthday() {
-		return birthday;
+		if (birthday.contains("-")) {
+			String year = birthday.substring(2, 4);
+			String month = birthday.substring(5, 7);
+			if (month.substring(0, 1).equals("0")) {
+				month = month.substring(1);
+			}
+			String day = birthday.substring(8, 10);
+			if (day.substring(0, 1).equals("0")) {
+				day = day.substring(1);
+			}
+			return month + "/" + day + "/" + year;
+		}
+		else {
+			return birthday;
+		}
 	}
 	
 	public String getHeightFormatted() {
