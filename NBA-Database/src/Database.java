@@ -94,14 +94,15 @@ public class Database {
     }
     
     public ArrayList<Team> getTeams() throws SQLException {
-        String sql = "SELECT TEAM.TEAM_NAME,\n" + 
-        		"        TEAM.TEAM_ABBREVIATION,\n" + 
-        		"        ROUND(avg(playorb), 3) AS OFFENSIVE,\n" + 
-        		"        ROUND(avg(playdrb), 3) AS DEFENSIVE,\n" + 
-        		"        ROUND(avg(playorb)/(avg(playdrb)+0.001), 2) AS OFFENSIVILITY\n" + 
-        		"FROM TEAM, player_in_team\n" + 
-        		"WHERE TEAM.TEAM_ABBREVIATION = PLAYER_IN_TEAM.TEAM_ABBREVIATION\n" + 
-        		"GROUP BY TEAM.TEAM_NAME, TEAM.TEAM_ABBREVIATION";
+        String sql = "SELECT team_name, team_abbreviation, \r\n" + 
+        		"       round(offen/(SELECT max(offen) from team_style), 3) as OFFENSIVE, \r\n" + 
+        		"       round(defen/(SELECT max(defen) FROM team_style), 3) as DEFENSIVE, \r\n" + 
+        		"       ROUND(\r\n" + 
+        		"             ((offen/(SELECT max(offen) from team_style))\r\n" + 
+        		"              /\r\n" + 
+        		"             ((defen/(SELECT max(defen) FROM team_style))+0.001))\r\n" + 
+        		"            , 2)/2 AS OFFENSIVILITY\r\n" + 
+        		"FROM team_style";
         ArrayList<Team> teams = new ArrayList<Team>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
