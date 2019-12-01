@@ -147,21 +147,7 @@
 			</div>
 		</div>
 		<!-- menu unit end -->
-		
-		<!-- menu unit start-->
-		<div>
-			<div class="my-main-item" data-toggle="collapse" data-target="#Game-info">
-				Game
-			</div>
 			
-			<div id="Game-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
-				
-				<a href="GameSearch.html" target="contentframe" class="my-sub-item">Game Search</a>
-
-			</div>
-		</div>
-		<!-- menu unit end -->
-		
 		<!-- menu unit start-->
 		<div>
 			<div class="my-main-item" data-toggle="collapse" data-target="#Predict">
