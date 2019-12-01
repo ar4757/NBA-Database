@@ -129,7 +129,7 @@
 					Player Basic Information
 				</a>
 				<a href="PlayerRank.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Player Rank</a>
-				<a href="playerImprovement" target="contentframe" class="my-sub-item">Player Improvement</a>
+				<a href="playerImprovement" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Player Improvement</a>
 			</div>
 		</div>
 		<!-- menu unit end -->
@@ -142,7 +142,7 @@
 			
 			<div id="Team-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href="teams" target="contentframe" class="my-sub-item" >Team Basic Information</a>
+				<a href="teams" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Team Basic Information</a>
 				<a href="TeamRank.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Team Rank</a>
 			</div>
 		</div>
@@ -187,6 +187,20 @@
 			<div id="MVP" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
 				<a href="MVPdisplay.html" target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Most Valuable Players</a>
+
+			</div>
+		</div>
+		<!-- menu unit end -->
+		
+		<!-- menu unit start-->
+		<div>
+			<div class="my-main-item" data-toggle="collapse" data-target="#Advanced-info">
+				Advanced
+			</div>
+			
+			<div id="Advanced-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
+				
+				<a href=# target="contentframe" class="my-sub-item">Common Age Influence</a>
 
 			</div>
 		</div>
