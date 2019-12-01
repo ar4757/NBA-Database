@@ -399,6 +399,24 @@ public class Database {
         return games;
     }
     
+    public ArrayList<AgePerform> getAgePerform() throws SQLException {
+        String sql = "SELECT * FROM AGE_PERFORM";
+        ArrayList<AgePerform> agePerforms = new ArrayList<AgePerform>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	AgePerform new_age_perform = new AgePerform(result.getString("AGE"), result.getString("PERFORMANCE"));
+            	agePerforms.add(new_age_perform);
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return agePerforms;
+    }
+    
     public int getTupleCount() throws SQLException {
     	int tupleCount = 0;
 		tupleCount += getTupleCountForTable("PLAYER");

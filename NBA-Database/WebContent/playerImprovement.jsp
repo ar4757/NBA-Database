@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
 </head>
-<body style="background-color:grey">
+<body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
   	<h3>Player Improvement</h3>
 	<c:forEach items="${impro}" var="player">

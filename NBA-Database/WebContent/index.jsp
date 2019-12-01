@@ -200,7 +200,7 @@
 			
 			<div id="Advanced-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href=# target="contentframe" class="my-sub-item">Common Age Influence</a>
+				<a href=AgePerformance target="contentframe" class="my-sub-item">Common Age Influence</a>
 
 			</div>
 		</div>
