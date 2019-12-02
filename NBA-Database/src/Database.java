@@ -95,6 +95,24 @@ public class Database {
         return players;
     }
     
+    public ArrayList<PlayerRank> getPlayerRanks(String year) throws SQLException {
+        String sql = "SELECT * FROM PLAYER_RANK_" + year;
+        ArrayList<PlayerRank> playerRanks = new ArrayList<PlayerRank>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	PlayerRank newPlayerRank = new PlayerRank(result.getString("PLAYER_RANK"), result.getString("PLAYER_NAME"), result.getString("PLAY_POSITION"), result.getString("RANK_SCORE"));
+            	playerRanks.add(newPlayerRank);
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return playerRanks;
+    }
+    
     public ArrayList<Team> getTeams() throws SQLException {
         String sql = "SELECT team_name, team_abbreviation, \r\n" + 
         		"       round(offen/(SELECT max(offen) from team_style), 3) as OFFENSIVE, \r\n" + 
