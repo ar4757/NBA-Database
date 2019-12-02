@@ -186,7 +186,7 @@
 			
 			<div id="Advanced-info" class="collapse" data-parent="#my-menu" style="font-size:12px;">
 				
-				<a href=AgePerformance target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Common Age Influence</a>
+				<a href="http://localhost:8080/NBA-Database/AgeInfluence.html" target="contentframe" class="my-sub-item">Common Age Influence</a>
 				
 				<a href=HeightPerformance target="contentframe" class="my-sub-item" onclick="showLoadingImage();">Common Height Influence</a>
 
