@@ -22,6 +22,7 @@
 		 			<th>Player Height</th>
 		 			<th>Player Weight</th>
 		 			<th>Player Birthday</th>
+		 			<th>Player Teams</th>
 		 		</tr>
 		 	
 		 	</thead>
@@ -32,6 +33,7 @@
 		 			<td>${player.heightFormatted}</td>
 		 			<td>${player.weightFormatted}</td>
 		 			<td>${player.birthday}</td>
+		 			<td>${player.teams}</td>
 		 		</tr>
 		 		
 		 	</tbody>

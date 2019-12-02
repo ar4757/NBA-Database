@@ -76,13 +76,15 @@ public class Database {
     String password = "82730430";
      
     public ArrayList<Player> getPlayers() throws SQLException {
-        String sql = "SELECT * FROM PLAYER";
+        String sql = "SELECT DISTINCT PLAYER_NAME, PLAYER_HEIGHT, PLAYER_WEIGHT, PLAYER_BIRTHDAY, listagg(DISTINCT TEAM_ABBREVIATION, ', ') within group (order by PLAYER_NAME) as teams\n" + 
+        		"FROM (PLAYER NATURAL JOIN PLAYER_IN_TEAM)\n" + 
+        		"GROUP BY PLAYER_NAME, PLAYER_HEIGHT, PLAYER_WEIGHT, PLAYER_BIRTHDAY";
         ArrayList<Player> players = new ArrayList<Player>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"));
+            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"), result.getString("teams"));
             	players.add(newPlayer);
             }
              
@@ -185,7 +187,7 @@ public class Database {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"));
+            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"), null);
             	players.add(newPlayer);
             }
              

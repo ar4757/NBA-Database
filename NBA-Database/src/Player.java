@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,12 +9,14 @@ public class Player {
 	private String height;
 	private String weight;
 	private String birthday;
+	private String teams;
 	
-	public Player(String name, String height, String weight, String birthday) {
+	public Player(String name, String height, String weight, String birthday, String teams) {
 		this.name = name;
 		this.height = height;
 		this.weight = weight;
 		this.birthday = birthday;
+		this.teams = teams;
 	}
 	
 	public String getName() {
@@ -44,6 +47,10 @@ public class Player {
 		else {
 			return birthday;
 		}
+	}
+	
+	public String getTeams() {
+		return teams;
 	}
 	
 	public String getHeightFormatted() {
