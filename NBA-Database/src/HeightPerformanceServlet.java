@@ -26,6 +26,12 @@ public class HeightPerformanceServlet extends HttpServlet {
              
             request.setAttribute("heightPerforms", heightPerforms);
              
+            ArrayList<Double> performance = new ArrayList<Double>();
+            for (int i = 0; i < heightPerforms.size(); i++) {
+            	performance.add(Double.parseDouble(heightPerforms.get(i).getPerformance()));
+            }
+            request.setAttribute("performance", performance);
+            
             String pheight = "/HeightPerformance.jsp";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(pheight);
             requestDispatcher.forward(request, response);              
