@@ -13,7 +13,7 @@
 </head>
 <body style="background-color:grey" onload="hideLoadingImage();">
 <ul>
-  	<h3>Player Improvement</h3>
+  	<h3>Player Improvement (2012 - 2018)</h3>
 	<c:forEach items="${impro}" var="player">
 		<table class="table table-dark table-striped">
 			<thead>
