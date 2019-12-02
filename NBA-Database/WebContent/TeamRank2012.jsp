@@ -20,6 +20,7 @@
 		 		<tr>
 		 			<th>Team Rank</th>
 		 			<th>Team Abbreviation</th>
+		 			<th>Team Name</th>
 		 		</tr>
 		 	
 		 	</thead>
@@ -28,6 +29,7 @@
 		 		<tr>
 		 			<td>${teamRank.rank}</td>
 		 			<td>${teamRank.abbreviation}</td>
+		 			<td>${teamRank.name}</td>
 		 		</tr>
 		 		
 		 	</tbody>

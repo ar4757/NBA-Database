@@ -2,11 +2,13 @@
 public class TeamRank {
 	private String rank;
 	private String abbreviation;
+	private String name;
 	private String winscore;
 	
-	public TeamRank(String rank, String abbreviation, String winscore) {
+	public TeamRank(String rank, String abbreviation, String name, String winscore) {
 		this.rank = rank;
 		this.abbreviation = abbreviation;
+		this.name = name;
 		this.winscore = winscore;
 	}
 	
@@ -16,6 +18,10 @@ public class TeamRank {
 	
 	public String getAbbreviation() {
 		return abbreviation;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	public String getWinscore() {

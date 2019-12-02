@@ -140,13 +140,13 @@ public class Database {
     }
     
     public ArrayList<TeamRank> getTeamRanks(String year) throws SQLException {
-        String sql = "SELECT * FROM TEAM_RANK_" + year;
+        String sql = "SELECT * FROM TEAM_RANK_" + year + " NATURAL JOIN TEAM ORDER BY TEAM_RANK";
         ArrayList<TeamRank> teamRanks = new ArrayList<TeamRank>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	TeamRank newTeamRank = new TeamRank(result.getString("TEAM_RANK"), result.getString("TEAM_ABBREVIATION"), result.getString("TEAMWINSCORE"));
+            	TeamRank newTeamRank = new TeamRank(result.getString("TEAM_RANK"), result.getString("TEAM_ABBREVIATION"), result.getString("TEAM_NAME"), result.getString("TEAMWINSCORE"));
             	teamRanks.add(newTeamRank);
             }
              
