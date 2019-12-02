@@ -19,7 +19,12 @@ public class IndexServlet extends HttpServlet {
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Database database = new Database();
+        try {
+			DriverManager.registerDriver (new oracle.jdbc.OracleDriver());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          
         //try {
             //ArrayList<String> playerNames = database.getPlayers();
