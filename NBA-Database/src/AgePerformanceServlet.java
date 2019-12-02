@@ -25,6 +25,12 @@ public class AgePerformanceServlet extends HttpServlet {
             ArrayList<AgePerform> agePerforms = database.getAgePerform();
              
             request.setAttribute("agePerforms", agePerforms);
+            
+            ArrayList<Double> performance = new ArrayList<Double>();
+            for (int i = 0; i < agePerforms.size(); i++) {
+            	performance.add(Double.parseDouble(agePerforms.get(i).getPerformance()));
+            }
+            request.setAttribute("performance", performance);
              
             String page = "/AgePerformance.jsp";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);

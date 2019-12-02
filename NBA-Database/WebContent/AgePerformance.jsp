@@ -10,8 +10,72 @@
 <title>Age Performance</title>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/font-awesome.min.css" >
+<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
 </head>
 <body style="background-color:grey" onload="hideLoadingImage();">
+
+<div id="container" style="max-width:800px;height:400px;padding:40px;">
+        <script>
+        var performance = [
+        	<c:forEach items="${performance}" var="item" varStatus="loopStatus">
+        	${item}
+        	<c:if test="${!loopStatus.last}">
+        	, 
+        	</c:if>
+        </c:forEach>];
+        var chart = Highcharts.chart('container', {
+        	title: {
+        		text: 'Age Influence On Performance'
+        	},
+        	yAxis: {
+        		title: {
+        			text: 'Performance Score'
+        		}
+        	},
+        	xAxis: {
+        		title: {
+        			text: 'Player Age'
+        		}
+        	},
+        	legend: {
+        		layout: 'vertical',
+        		align: 'right',
+        		verticalAlign: 'middle'
+        	},
+        	plotOptions: {
+        		series: {
+        			label: {
+        				connectorAllowed: false
+        			},
+        			pointStart: 19
+        		}
+        	},
+        	series: [{
+        		name: 'Performance Score',
+        		data: performance
+        	},],
+        	responsive: {
+        		rules: [{
+        			condition: {
+        				maxWidth: 500
+        			},
+        			chartOptions: {
+        				legend: {
+        					layout: 'horizontal',
+        					align: 'center',
+        					verticalAlign: 'bottom'
+        				}
+        			}
+        		}]
+        	}
+        });
+        </script>
+</div>
+
 <ul>
   	<h3>Age Influence</h3>
 	<c:forEach items="${agePerforms}" var="agePerform">
