@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,23 +13,23 @@
 </head>
 <body style="background-color:grey">
 <ul>
-  	<h3>Players Rank in 2014</h3>
-	<c:forEach items="${players}" var="player">
+  	<h3>Player Rank in 2014</h3>
+	<c:forEach items="${playerRanks}" var="playerRank">
 		<table class="table table-dark table-striped">
 			<thead>
 		 		<tr>
 		 			<th>Player Rank</th>
 		 			<th>Player Name</th>
-		 			<th>Player's position</th>
+		 			<th>Player's Position</th>
 		 		</tr>
 		 	
 		 	</thead>
-		 		<tbody>
+		 	<tbody>
 		 	
 		 		<tr>
-		 			<td>${player.name}</td>
-		 			<td>${player.heightFormatted}</td>
-		 			<td>${player.weightFormatted}</td>
+		 			<td>${playerRank.rank}</td>
+		 			<td>${playerRank.name}</td>
+		 			<td>${playerRank.position}</td>
 		 		</tr>
 		 		
 		 	</tbody>
@@ -43,16 +45,5 @@
 <script src="resources/js/sweetalert.min.js" ></script>
 <script type="text/javascript" src="resources/js/vue.min.js"></script>
 <script type="text/javascript" src="resources/js/my.js"></script>
-<script type="text/javascript">
-function showLoadingImage(){
-	parent.document.getElementById("loading-image").style.display = 'block';
-	parent.document.getElementById("contentframe").style.display = 'none';
-}
-
-function hideLoadingImage(){
-	parent.document.getElementById("loading-image").style.display = 'none';
-	parent.document.getElementById("contentframe").style.display = 'block';
-}
-</script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,22 +14,22 @@
 <body style="background-color:grey">
 <ul>
   	<h3>Player Rank in 2012</h3>
-	<c:forEach items="${players}" var="player">
+	<c:forEach items="${playerRanks}" var="playerRank">
 		<table class="table table-dark table-striped">
 			<thead>
 		 		<tr>
 		 			<th>Player Rank</th>
 		 			<th>Player Name</th>
-		 			<th>Player's position</th>
+		 			<th>Player's Position</th>
 		 		</tr>
 		 	
 		 	</thead>
 		 	<tbody>
 		 	
 		 		<tr>
-		 			<td>${player.name}</td>
-		 			<td>${player.heightFormatted}</td>
-		 			<td>${player.weightFormatted}</td>
+		 			<td>${playerRank.rank}</td>
+		 			<td>${playerRank.name}</td>
+		 			<td>${playerRank.position}</td>
 		 		</tr>
 		 		
 		 	</tbody>

@@ -76,13 +76,15 @@ public class Database {
     String password = "82730430";
      
     public ArrayList<Player> getPlayers() throws SQLException {
-        String sql = "SELECT * FROM PLAYER";
+        String sql = "SELECT DISTINCT PLAYER_NAME, PLAYER_HEIGHT, PLAYER_WEIGHT, PLAYER_BIRTHDAY, listagg(DISTINCT TEAM_ABBREVIATION, ', ') within group (order by PLAYER_NAME) as teams\n" + 
+        		"FROM (PLAYER NATURAL JOIN PLAYER_IN_TEAM)\n" + 
+        		"GROUP BY PLAYER_NAME, PLAYER_HEIGHT, PLAYER_WEIGHT, PLAYER_BIRTHDAY";
         ArrayList<Player> players = new ArrayList<Player>();
         try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"));
+            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"), result.getString("teams"));
             	players.add(newPlayer);
             }
              
@@ -91,6 +93,24 @@ public class Database {
             throw ex;
         }      
         return players;
+    }
+    
+    public ArrayList<PlayerRank> getPlayerRanks(String year) throws SQLException {
+        String sql = "SELECT * FROM PLAYER_RANK_" + year;
+        ArrayList<PlayerRank> playerRanks = new ArrayList<PlayerRank>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	PlayerRank newPlayerRank = new PlayerRank(result.getString("PLAYER_RANK"), result.getString("PLAYER_NAME"), result.getString("PLAY_POSITION"), result.getString("RANK_SCORE"));
+            	playerRanks.add(newPlayerRank);
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return playerRanks;
     }
     
     public ArrayList<Team> getTeams() throws SQLException {
@@ -119,6 +139,24 @@ public class Database {
         return teams;
     }
     
+    public ArrayList<TeamRank> getTeamRanks(String year) throws SQLException {
+        String sql = "SELECT * FROM TEAM_RANK_" + year + " NATURAL JOIN TEAM ORDER BY TEAM_RANK";
+        ArrayList<TeamRank> teamRanks = new ArrayList<TeamRank>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	TeamRank newTeamRank = new TeamRank(result.getString("TEAM_RANK"), result.getString("TEAM_ABBREVIATION"), result.getString("TEAM_NAME"), result.getString("TEAMWINSCORE"));
+            	teamRanks.add(newTeamRank);
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return teamRanks;
+    }
+        
     public Team getTeamWithAbbreviation(String team_abbreviation) throws SQLException {
         String sql = "SELECT * FROM TEAM WHERE TEAM_ABBREVIATION = '" + team_abbreviation + "'";
         Team team;
@@ -185,7 +223,7 @@ public class Database {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"));
+            	Player newPlayer = new Player(result.getString("PLAYER_NAME"), result.getString("PLAYER_HEIGHT"), result.getString("PLAYER_WEIGHT"), result.getString("PLAYER_BIRTHDAY"), null);
             	players.add(newPlayer);
             }
              
