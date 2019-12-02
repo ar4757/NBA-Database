@@ -490,7 +490,7 @@ public class Database {
     	return tupleCount;
     }
     
-    private int getTupleCountForTable(String tableName) throws SQLException {
+    public int getTupleCountForTable(String tableName) throws SQLException {
     	int tupleCount = 0;
     	try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
 	    	String sql = "SELECT COUNT(*) AS ROW_COUNT FROM " + tableName;

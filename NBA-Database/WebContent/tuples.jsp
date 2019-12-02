@@ -16,19 +16,63 @@
 	<table class="table table-dark table-striped">
 		<thead>
 	 		<tr>
-	 			<th>Tuple Count</th>
+	 			<th>Player Tuple Count</th>
 	 		</tr>
-	 	
 	 	</thead>
 	 		<tbody>
-	 	
 	 		<tr>
-	 			<td>${tupleCount}</td>
+	 			<td>${playerTupleCount}</td>
 	 		</tr>
-	 		
 	 	</tbody>
-			
-	</table>    
+	</table> 
+	<table class="table table-dark table-striped">
+		<thead>
+	 		<tr>
+	 			<th>Team Tuple Count</th>
+	 		</tr>
+	 	</thead>
+	 		<tbody>
+	 		<tr>
+	 			<td>${teamTupleCount}</td>
+	 		</tr>
+	 	</tbody>
+	</table>
+	<table class="table table-dark table-striped">
+		<thead>
+	 		<tr>
+	 			<th>Game Tuple Count</th>
+	 		</tr>
+	 	</thead>
+	 		<tbody>
+	 		<tr>
+	 			<td>${gameTupleCount}</td>
+	 		</tr>
+	 	</tbody>
+	</table> 
+	<table class="table table-dark table-striped">
+		<thead>
+	 		<tr>
+	 			<th>Player_Stats Tuple Count</th>
+	 		</tr>
+	 	</thead>
+	 		<tbody>
+	 		<tr>
+	 			<td>${playerStatsTupleCount}</td>
+	 		</tr>
+	 	</tbody>
+	</table>  
+	<table class="table table-dark table-striped">
+		<thead>
+	 		<tr>
+	 			<th>Total Tuple Count</th>
+	 		</tr>
+	 	</thead>
+	 		<tbody>
+	 		<tr>
+	 			<td>${totalTupleCount}</td>
+	 		</tr>
+	 	</tbody>
+	</table> 
 </ul>
 
 <script src="resources/js/jquery.min.js" ></script>

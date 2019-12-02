@@ -22,10 +22,21 @@ public class TuplesServlet extends HttpServlet {
         Database database = new Database();
          
         try {
-            int tupleCount = database.getTupleCount();
-             
-            request.setAttribute("tupleCount", tupleCount);
-             
+        	int playerTupleCount = database.getTupleCountForTable("PLAYER");
+            request.setAttribute("playerTupleCount", playerTupleCount);
+            
+            int teamTupleCount = database.getTupleCountForTable("TEAM");
+            request.setAttribute("teamTupleCount", teamTupleCount);
+            
+            int gameTupleCount = database.getTupleCountForTable("GAME");
+            request.setAttribute("gameTupleCount", gameTupleCount);
+            
+            int playerStatsTupleCount = database.getTupleCountForTable("PLAYER_STATS");
+            request.setAttribute("playerStatsTupleCount", playerStatsTupleCount);
+            
+            int totalTupleCount = database.getTupleCount();
+            request.setAttribute("totalTupleCount", totalTupleCount);
+            
             String page = "/tuples.jsp";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
             requestDispatcher.forward(request, response);              
