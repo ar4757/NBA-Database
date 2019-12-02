@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>PlayerRank</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" >
+<link rel="stylesheet" href="resources/css/font-awesome.min.css" >
+    <head>
+        <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* css 代码  */
+        </style>
+        <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+        
+    </head>
+    <body style="background-color:grey">
+        <div id="container" style="max-width:800px;height:400px"></div>
+        
+        <script>
+        var chart = Highcharts.chart('container', {
+        	title: {
+        		text: 'Height Influence On Performance'
+        	},
+        	yAxis: {
+        		title: {
+        			text: 'Performance Score'
+        		}
+        	},
+        	xAxis: {
+        		title: {
+        			text: 'Player Height'
+        		}
+        	},
+        	legend: {
+        		layout: 'vertical',
+        		align: 'right',
+        		verticalAlign: 'middle'
+        	},
+        	plotOptions: {
+        		series: {
+        			label: {
+        				connectorAllowed: false
+        			},
+        			pointStart: 69
+        		}
+        	},
+        	series: [{
+        		name: 'Performance Score',
+        		data: [43934, 52503, 57177, 69658, 97031, 119931, 137133]
+        	},],
+        	responsive: {
+        		rules: [{
+        			condition: {
+        				maxWidth: 500
+        			},
+        			chartOptions: {
+        				legend: {
+        					layout: 'horizontal',
+        					align: 'center',
+        					verticalAlign: 'bottom'
+        				}
+        			}
+        		}]
+        	}
+        });
+        </script>
+        
+        
+<script src="resources/js/jquery.min.js" ></script>
+<script src="resources/js/bootstrap.bundle.min.js"></script>
+<script src="resources/layer/layer.js" ></script>
+<script src="resources/js/sweetalert.min.js" ></script>
+<script type="text/javascript" src="resources/js/vue.min.js"></script>
+<script type="text/javascript" src="resources/js/my.js"></script>
+
+
+    </body>
+</html>
