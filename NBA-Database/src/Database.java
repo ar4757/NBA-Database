@@ -121,6 +121,24 @@ public class Database {
         return teams;
     }
     
+    public ArrayList<TeamRank> getTeamRanks(String year) throws SQLException {
+        String sql = "SELECT * FROM TEAM_RANK_" + year;
+        ArrayList<TeamRank> teamRanks = new ArrayList<TeamRank>();
+        try (Connection connection = DriverManager.getConnection(databaseURL, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+            	TeamRank newTeamRank = new TeamRank(result.getString("TEAM_RANK"), result.getString("TEAM_ABBREVIATION"), result.getString("TEAMWINSCORE"));
+            	teamRanks.add(newTeamRank);
+            }
+             
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }      
+        return teamRanks;
+    }
+        
     public Team getTeamWithAbbreviation(String team_abbreviation) throws SQLException {
         String sql = "SELECT * FROM TEAM WHERE TEAM_ABBREVIATION = '" + team_abbreviation + "'";
         Team team;
