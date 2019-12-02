@@ -29,7 +29,7 @@
         </c:forEach>];
         var chart = Highcharts.chart('container', {
         	title: {
-        		text: 'Age Influence On Performance'
+        		text: 'Height Influence On Performance'
         	},
         	yAxis: {
         		title: {
@@ -38,7 +38,7 @@
         	},
         	xAxis: {
         		title: {
-        			text: 'Player Age'
+        			text: 'Player Height'
         		}
         	},
         	legend: {
@@ -51,7 +51,7 @@
         			label: {
         				connectorAllowed: false
         			},
-        			pointStart: 19
+        			pointStart: 69
         		}
         	},
         	series: [{
